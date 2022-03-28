@@ -1,9 +1,12 @@
 const canvas = document.getElementById('canvas')
+const canvasCover = document.getElementById('canvasCover')
 const score = document.getElementById('score')
 const wrapper = document.getElementById('wrapper')
 
 
 const context = canvas.getContext('2d')
+
+
 
 var birdImg = new Image()
 var background = new Image()
@@ -31,6 +34,19 @@ let tubes = [
     }
 ]
 
+
+function ending () {
+    setTimeout( () =>   {
+        canvasCover.append(darkscreen)
+        darkscreen.appendChild(restart)
+        document.addEventListener('keydown', () => {
+            window.location.reload()
+        })
+
+    },500)
+    
+}
+
 function up () {
     bird.y -= 10
     setTimeout(function () {
@@ -45,14 +61,12 @@ function up () {
     }, 20)
 }
 
+
 function game () {
     context.drawImage(background, 0, 0)
-    context.drawImage(birdImg, bird.x, bird.y) 
     bird.y += 2
+    context.drawImage(birdImg, bird.x, bird.y)
  
-
-
-
     const randomY = (topTube.height / (Math.floor(Math.random()*3)+1)) - topTube.height
 
     
@@ -72,7 +86,10 @@ function game () {
 
         
 
-        if (bird.y + birdImg.height >= canvas.height || bird.y <= 0 || bird.x + birdImg.width - 5 >= tubes[i].x && bird.x <= tubes[i].x + topTube.width && (bird.y <= tubes[i].y + topTube.height || bird.y + birdImg.height >= tubes[i].y + topTube.height + betweenTubes)  ) return
+        if (bird.y + birdImg.height >= canvas.height || bird.y <= 0 || bird.x + birdImg.width - 5 >= tubes[i].x && bird.x <= tubes[i].x + topTube.width && (bird.y <= tubes[i].y + topTube.height || bird.y + birdImg.height >= tubes[i].y + topTube.height + betweenTubes)  ) {
+            ending()
+            return
+        } 
 
         if (bird.x == tubes[i].x + topTube.width ) {
             scoreCount ++
@@ -85,6 +102,16 @@ function game () {
 
     requestAnimationFrame(game)
 }
+
+const darkscreen = document.createElement('div')
+darkscreen.classList.add('dark')
+const restart = document.createElement('button')
+restart.classList.add('restartBtn')
+restart.innerHTML = 'RESTART'
+restart.addEventListener('click', function () {
+    window.location.reload()
+})
+
 document.addEventListener("keydown", up)
 wrapper.addEventListener('click', up)
 game()

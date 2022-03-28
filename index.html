@@ -7,22 +7,57 @@
     <title>Document</title>
 </head>
 <style>
-    div {
-        display: flex; 
+    * {
+        box-sizing: border-box;
+    }
+
+    #wrapper {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+    }
+    #canvas {   
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    #canvasCover {
+        position: relative;
     }
     h1 {
         display: flex;
         justify-content: center;
-        align-items: center;
-        flex: 1;
         background-color: rgb(121, 201, 255);
-        
     }
+
+    .dark {
+        background-color: rgba(0, 0, 0, .3);
+        position: absolute ;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }    
+
+    .restartBtn {
+        color: rgb(0, 91, 187);
+        padding: 10px 20px;
+        font-weight: 700;
+        border-radius: 20px;
+        border: 2px solid rgb(121, 201, 255);
+    }
+
 </style>
 <body>
     <div id="wrapper">
-        <canvas id='canvas' width="800" height="500"></canvas>
+        <div id="canvasCover">
+           <canvas id='canvas' width="800" height="500"></canvas> 
+        </div>
+        
         <h1 id="score">0</h1>
     </div>
 </body>
