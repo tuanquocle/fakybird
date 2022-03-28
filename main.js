@@ -1,5 +1,7 @@
 const canvas = document.getElementById('canvas')
 const score = document.getElementById('score')
+const wrapper = document.getElementById('wrapper')
+
 
 const context = canvas.getContext('2d')
 
@@ -14,7 +16,7 @@ topTube.src ="fakybird/ongtren.png"
 bottomTube.src ="fakybird/ongduoi.png"
 
 const bird = {
-    x: canvas.width/3 ,
+    x: 302 ,
     y: canvas.height/2 - birdImg.height
 }
 
@@ -72,18 +74,17 @@ function game () {
 
         if (bird.y + birdImg.height >= canvas.height || bird.y <= 0 || bird.x + birdImg.width - 5 >= tubes[i].x && bird.x <= tubes[i].x + topTube.width && (bird.y <= tubes[i].y + topTube.height || bird.y + birdImg.height >= tubes[i].y + topTube.height + betweenTubes)  ) return
 
-        if (bird.x == tubes[i].x + topTube.width + 3) {
+        if (bird.x == tubes[i].x + topTube.width ) {
             scoreCount ++
         }
-        console.log()
-        
         
     }
   
-    score.innerHTML = scoreCount
+    score.innerHTML = `Score: ${scoreCount}`
     
 
     requestAnimationFrame(game)
 }
 document.addEventListener("keydown", up)
+wrapper.addEventListener('click', up)
 game()

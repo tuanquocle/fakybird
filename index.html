@@ -9,17 +9,20 @@
 <style>
     div {
         display: flex; 
-        flex-direction: column;
+        
     }
     h1 {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex: 1 
+        flex: 1;
+        background-color: rgb(169, 255, 255);
+        border-radius: 50%;
+        
     }
 </style>
 <body>
-    <div>
+    <div id="wrapper">
         <canvas id='canvas' width="800" height="500"></canvas>
         <h1 id="score">0</h1>
     </div>
