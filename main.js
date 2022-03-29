@@ -118,8 +118,12 @@ document.addEventListener("keydown", up)
 wrapper.addEventListener('click', up)
 
 function startGame () {
-    document.addEventListener(('keydown'), game, {once: true} )
-    mainBtn.addEventListener('click', game)
+    if (document.addEventListener(('keydown'), game, {once: true} )) {
+        document.removeEventListener('keydown', game)
+    }
+    if (mainBtn.addEventListener('click', game, {once: true})) {
+        mainBtn.removeEventListener('click', game)
+    }
 
 }
 startGame()
