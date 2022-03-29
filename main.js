@@ -63,6 +63,7 @@ function up () {
 
 
 function game () {
+    canvas.classList.remove('hidden')
     mainBtn.removeEventListener('click', game)
     document.removeEventListener('keydown', game)
 
@@ -121,6 +122,7 @@ document.addEventListener("keydown", up)
 wrapper.addEventListener('click', up)
 
 function startGame () {
+    canvas.classList.add('hidden')
     document.addEventListener('keydown', game, {once: true} )
     mainBtn.addEventListener('click', game, {once: true})
 
