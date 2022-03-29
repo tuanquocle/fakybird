@@ -63,6 +63,9 @@ function up () {
 
 
 function game () {
+    mainBtn.removeEventListener('click', game)
+    document.removeEventListener('keydown', game)
+
     main.classList.add('hidden')
 
     context.drawImage(background, 0, 0)
@@ -118,12 +121,8 @@ document.addEventListener("keydown", up)
 wrapper.addEventListener('click', up)
 
 function startGame () {
-    if (document.addEventListener(('keydown'), game, {once: true} )) {
-        document.removeEventListener('keydown', game)
-    }
-    if (mainBtn.addEventListener('click', game, {once: true})) {
-        mainBtn.removeEventListener('click', game)
-    }
+    document.addEventListener('keydown', game, {once: true} )
+    mainBtn.addEventListener('click', game, {once: true})
 
 }
 startGame()
