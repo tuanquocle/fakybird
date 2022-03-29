@@ -23,6 +23,7 @@
     }
     #canvasCover {
         position: relative;
+
     }
     h1 {
         display: flex;
@@ -31,7 +32,7 @@
     }
 
     .dark {
-        background-color: rgba(0, 0, 0, .3);
+        background-color: rgba(0, 0, 0, .5);
         position: absolute ;
         top: 0;
         right: 0;
@@ -50,15 +51,52 @@
         border-radius: 20px;
         border: 2px solid rgb(121, 201, 255);
     }
+    .hidden {
+        display: none;
+    }
+    #main {
+        position: relative;
+    }
+    #mainBtn {
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+    #mainBtn:hover {
+        cursor: pointer;
+    }
+    p {
+        color: rgb(208, 0, 0);
+        font-size: 100px;
+        margin-bottom: 20px;
+    }
+    #anyBtn {
+        font-size: large;
+        padding: 10px 25px;
+        font-weight: 400;
+        cursor: pointer;
+
+    }
 
 </style>
 <body>
     <div id="wrapper">
         <div id="canvasCover">
-           <canvas id='canvas' width="800" height="500"></canvas> 
+            <div id="main">
+                <div id="mainBtn">
+                    <p>faky bird</p>
+                    <button id="anyBtn">PRESS ANY KEY TO PLAY</button>
+                </div>
+                <img src="./fakybird/nenchinh.png"/>
+            </div>
+            <canvas id='canvas' width="800" height="500"></canvas> 
+
         </div>
         
-        <h1 id="score">0</h1>
+        <h1 id="score">PRESS ANY KEY TO PLAY</h1>
     </div>
 </body>
 

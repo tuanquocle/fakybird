@@ -2,10 +2,10 @@ const canvas = document.getElementById('canvas')
 const canvasCover = document.getElementById('canvasCover')
 const score = document.getElementById('score')
 const wrapper = document.getElementById('wrapper')
-
+const main = document.getElementById('main')
+const mainBtn = document.getElementById('mainBtn')
 
 const context = canvas.getContext('2d')
-
 
 
 var birdImg = new Image()
@@ -20,7 +20,7 @@ bottomTube.src ="fakybird/ongduoi.png"
 
 const bird = {
     x: 302 ,
-    y: canvas.height/2 - birdImg.height
+    y: canvas.height/2
 }
 
 const betweenTubes = 140
@@ -63,6 +63,8 @@ function up () {
 
 
 function game () {
+    main.classList.add('hidden')
+
     context.drawImage(background, 0, 0)
     bird.y += 2
     context.drawImage(birdImg, bird.x, bird.y)
@@ -114,4 +116,10 @@ restart.addEventListener('click', function () {
 
 document.addEventListener("keydown", up)
 wrapper.addEventListener('click', up)
-game()
+
+function startGame () {
+    document.addEventListener(('keydown'), game, {once: true} )
+    mainBtn.addEventListener('click', game)
+
+}
+startGame()
