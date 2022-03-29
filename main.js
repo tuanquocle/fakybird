@@ -86,7 +86,7 @@ function game () {
                 y: randomY
             })
         }
-        if (tubes[i].x == -60) {
+        if (tubes[i].x == - canvas.width + 300 -60) {
             tubes.shift()
         }
 
@@ -103,7 +103,7 @@ function game () {
         
     }
   
-    score.innerHTML = `Score: ${scoreCount}`
+    score.innerHTML = `Score: ${tubes.length}`
     
 
     requestAnimationFrame(game)
