@@ -103,7 +103,7 @@ function game () {
         
     }
   
-    score.innerHTML = `Score: ${tubes.length}`
+    score.innerHTML = `Score: ${scoreCount}`
     
 
     requestAnimationFrame(game)
